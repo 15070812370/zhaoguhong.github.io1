@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>代码小工具</title>
+</head>
+</head>
+<link href="/js/bootstrap.min.css" rel="stylesheet">
+<script src="/js/jquery-2.1.4.min.js"></script>
+<script src="/js/layer/layer.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jsformat.js"></script>
+<script src="/js/htmlformat.js"></script>
+<script src="/js/jsonFormat.js"></script>
+<script src="/js/vue.js"></script>
+<script src="/js/common.js"></script>
+<style>
+.form-control {
+	font-size: 16px;
+}
+ body {
+	padding-top: 50px;
+    padding-left: 50px;
+}
+</style>
+<body>
+<!-- 	当前ip为：
+	<script type="text/javascript" src="http://ip.chinaz.com/getip.aspx"></script>
+	<input type="button" value="测试" id="test" />  -->
+	<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">程序帮手</a>
+		</div>
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li class="active" id="toolsHeader"><a href="#"><span class="glyphicon glyphicon-home">常用小工具</span></a></li>
+				<li id="entityHeader"><a href="#shop"><span class="glyphicon glyphicon-shopping-cart">实体类生成</span></a></li>
+				<li id="joinSqlHeader"><a href="#support"><span class="glyphicon glyphicon-headphones">拼接sql</span></a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="container" id="tools">
+	 <br/>
+		<div class="row">
+			<div class="col-xs-6"><textarea  class="form-control" rows="27" v-model="oldVal"></textarea></div>
+			<div class="col-xs-6"><textarea  class="form-control" rows="27" v-model="newVal" id="newVal"></textarea></div>
+		</div>
+		 <br/>
+		<div class="row text-center" >
+			<label class="strButton">
+			<input type="button" value="大转小"  @click='bigToSmall' class="btn btn-primary" />
+			<input type="button" value="小转大"  @click='smallToBig' class="btn btn-primary" />
+			<input type="button" value="stringBuilder" @click='stringBuilder' class="btn btn-success" />
+			<input type="button" value="getSetMethod" @click='getSetMethod'  class="btn btn-success" /> 
+			<input type="button" value="js格式化"  @click='jsFormat' class="btn btn-info" />
+			<input type="button" value="html格式化" @click='htmlFormat' class="btn btn-info" />
+			<input type="button" value="json格式化" @click='jsonFormat' class="btn btn-info" />
+			<input type="button" value="sql格式化" @click='sqlFormat' class="btn btn-info" />
+			</label>
+			<label class="entityButton">
+			<input type="button" value="getSelectSql" @click="getSelectSql" class="btn btn-primary" /> 
+			<input type="button" value="getEntity" @click="getEntity" class="btn btn-primary" /> 
+			</label>
+			<label class="checkbox-inline text-right">
+	 		   <input type="checkbox" id="hibernateAnnotation" checked="checked" >hibernateAnnotation
+	  		</label>
+	  		<label class="checkbox-inline text-right">
+	 		   <input type="checkbox" id="doradoAnnotation" checked="checked" >doradoAnnotation
+	  		</label>
+	  		<label class="checkbox-inline text-right">
+	 		   <input type="checkbox" id="fieldAnnotation" checked="checked" >fieldAnnotation
+	  		</label>
+	  		<label class="checkbox-inline text-right">
+	 		   <input type="checkbox" id="baseEntity" checked="checked" >baseEntity
+	  		</label>
+	  		<input type="button" value="clear"  @click='clear' class="btn btn-danger pull-righ" />
+		</div>
+	</div>
+<div class="container" id="joinSql">
+ <br/>
+	<form class="form-horizontal" role="form" >
+		<fieldset id="config">
+			<legend>基本配置</legend>
+			<div class="form-group">
+				<!-- <label class="col-sm-1 control-label" for="ds_host">初始化sql</label> -->
+				<div class="col-sm-12" >
+					<textarea class="form-control" rows="5" type="text"  v-model="initSql" placeholder="初始化sql,可以为多行"/></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-1 control-label" >框架</label>
+				<div class="col-sm-3">
+					<select  class="form-control"  v-model="frame.selected" >
+						<option v-for="option in frame.options" v-bind:value="option.value">
+	    					{{ option.text }}
+	 		 			 </option>
+					</select>
+				</div>
+				<label class="col-sm-1 control-label" for="assignmentType" >赋值方式</label>
+				<div class="col-sm-3" >
+					<select  class="form-control"  v-model="assignmentType.selected" >
+						 <option v-for="option in assignmentType.options" v-bind:value="option.value">
+	    					{{ option.text }}
+	 		 			 </option>
+					</select>
+				</div>
+				<label class="col-sm-1 control-label" >返回类型</label>
+				<div class="col-sm-3">
+					<input class="form-control" type="text"   v-model="returnType"/>
+				</div>
+			</div>
+		</fieldset>
+		<fieldset id="parameters">
+			<legend>参数配置</legend>
+				<div class="form-group">
+					<label class="col-sm-2 text-center">名称</label> 
+					<label class="col-sm-2 text-center">参数类型</label>
+					<label class="col-sm-2 text-center">查询方式</label> 
+					<label class="col-sm-2 text-center">判空方式</label>
+					<label class="col-sm-2 text-center">appendSql</label>
+					<label class="col-sm-2 text-center">操作</label>
+				</div>
+				<div class="form-group" v-for='parameter in parameters'>
+				<div class="col-sm-2">
+					<input class="form-control" type="text"   v-model="parameter.name" @input ="changeAppendSql($index)"/>
+				</div>
+				<div class="col-sm-2">
+					<select  class="form-control"  v-model="parameter.dataType.selected"  v-on:change="changeDataType($index)">
+						 <option v-for="option in parameter.dataType.options" v-bind:value="option.value">
+	    					{{ option.text }}
+	 		 			 </option>
+					</select>
+				</div>
+				<div class="col-sm-2">
+					<select  class="form-control"  v-model="parameter.matchType.selected" @change ="changeAppendSql($index)" >
+						 <option v-for="option in parameter.matchType.options" v-bind:value="option.value" ">
+	    					{{ option.text }}
+	 		 			 </option>
+					</select>
+				</div>
+				<div class="col-sm-2">
+					<select  class="form-control"  v-model="parameter.verifyEmpty.selected" >
+						 <option v-for="option in parameter.verifyEmpty.options" v-bind:value="option.value">
+	    					{{ option.text }}
+	 		 			 </option>
+					</select>
+				</div>
+				<div class="col-sm-2">
+					<input class="form-control" type="text"   v-model="parameter.appendSql" v-bind:title="parameter.appendSql"/>
+				</div>
+					<div class="col-sm-2 text-center">
+						<a href="#" class="btn btn-info" v-on:click='del($index)'> <span class="glyphicon glyphicon-minus">del</span> 
+						</a>
+						<a href="#" class="btn btn-info" v-on:click='add()'> <span class="glyphicon glyphicon-plus">add</span>
+						</a>
+					</div>
+				</div>
+				
+			<div class="form-group">
+				<div class="col-sm-10">
+				</div>
+				<div class="col-sm-2 text-center">
+					<input type="button" value="生成" v-on:click='joinSql()' class="btn btn-success " />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-12">
+					<textarea class="form-control" rows="10" type="text"/>{{sql}}</textarea>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>
+<script type="text/javascript" src="/js/codehelper.js?version=<%=System.currentTimeMillis()%>"></script>
+</body>
+</html>
