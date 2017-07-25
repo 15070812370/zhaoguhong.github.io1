@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>雷佳平的主页</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        html,body{
+            height: 100%;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .app-wrap{
+            position: relative;
+            height: 100%;
+            width: 100%;
+            background: url("image/bz0x01.jpg") 50% 50% no-repeat;
+        }
+        #app{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            transform: translate(-50%, -50%);
+            background-color: rgba(28, 19, 55, 0.5);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .header{
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+        }
+        .logo{
+            display: inline-block;
+            height: 160px;
+            width: 160px;
+            margin: 20px auto;
+            border-radius: 80px;
+            box-shadow: 0 0 0 10px rgba(255,255,255,.1);
+        }
+        .logo img{
+            height: 160px;
+            width: 160px;
+            border-radius:80px;
+            box-shadow: 0 0 0 5px rgba(255,255,255,.1);
+        }
+        .name,
+        .desc{
+            font-weight: normal;
+            padding: 10px;
+        }
+        .desc{
+            font-size: 16px;
+        }
+        .footer{
+            padding: 20px;
+            text-align: center;
+        }
+        .btn{
+            display: inline-block;
+            width: 80%;
+            padding: 8px 0px;
+            color: #fff;
+            border-radius: 50px;
+            border: 1px solid #fff;
+            text-align: center;
+        }
+        .btn:hover{
+            animation: btn-hover 1s ease-out forwards;
+        }
+        @keyframes btn-hover{
+            from{
+                color: #fff;
+                background-color: rgba(255, 255, 255, .3);
+            }
+            to{
+                color: #2f293a;
+                background-color: rgba(255, 255, 255, 1);
+            }
+        }
+        @media screen and (max-width: 767px) {
+            #app{
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="app-wrap">
+    <div id="app">
+        <div class="header">
+            <div class="logo"><img src="image/header.jpg"></div>
+            <h1 class="name">枯荷听雨</h1>
+            <h2 class="desc">哪有什么岁月静好,只不过是有人替你负重前行!</h2>
+        </div>
+        <div class="footer">
+            <a href="/blog" target="_blank" class="btn">进入博客</a>
+        </div>
+    </div>
+    <div id="music">
+        <audio loop autoplay src="music/bgm.mp3"></audio>
+    </div>
+</div>
+</body>
+</html>
