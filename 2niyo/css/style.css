@@ -1,0 +1,417 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+html,body{
+    height: 100%;
+    color: #2f293a;
+}
+.no-grow-shrink{
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+.no-shrink{
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.max-width{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+.site-wrap{
+    height: 100%;
+}
+/* 头部 */
+.header-wrap{
+    position: fixed;
+    height: 60px;
+    width: 100%;
+    background-color: #2f293a;
+    z-index: 9999;
+}
+header{
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+    color: #fff;
+}
+.logo-wrap{
+    height: 60px;
+    line-height: 60px;
+    font-size: 24px;
+}
+.menu-list{
+    display: flex;
+}
+.menu-list li{
+    padding: 0 20px;
+}
+.menu-item{
+    display: block;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 20px;
+    text-align: center;
+    color: #fff;
+}
+.menu-item:hover{
+    background-color: rgba(255, 255, 255, .2);
+}
+
+/* 主体内容 */
+.content-wrap{
+    position: relative;
+    top: 60px;
+    width: 100%;
+}
+#carousel{
+    background-color: #f7f7f7;
+}
+#service{
+    background-color: #fff;
+}
+#case{
+    background-color: #f7f7f7;
+}
+#ours{
+    background-color: #fff;
+}
+footer{
+    background-color: #2f293a;
+}
+.section-header{
+    width: 100%;
+    text-align: center;
+}
+.section-title{
+    font-size: 24px;
+    padding: 10px 0;
+    border-bottom: 2px solid #2f293a;
+}
+
+/* 轮播图 */
+.carousel-wrap{
+    height: 600px;
+    overflow: hidden;
+}
+.carousel-wrap img{
+    height: 100%;
+    width: 100%;
+}
+.section-wrap{
+    padding: 100px 0;
+}
+
+/* 服务*/
+.service-list{
+    display: flex;
+    margin-top: 100px;
+}
+.service-item{
+    margin: 10px;
+    width: 25%;
+    padding: 20px 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px 4px #eee;
+    overflow: hidden;
+}
+.service-item:hover{
+    box-shadow: 0 0 10px 4px rgba(47, 41, 58, .5);
+}
+.service-icon{
+    text-align: center;
+    padding: 15px;
+    font-size: 60px;
+}
+.service-title{
+    text-align: center;
+    padding: 5px 15px;
+    font-size: 18px;
+}
+.service-desc{
+    text-align: center;
+    padding: 5px 15px;
+    color: #bbb;
+}
+
+/* 案例 */
+.case-list{
+    display: flex;
+    margin-top: 100px;
+    flex-wrap: wrap;
+}
+.case-item{
+    width: 25%;
+    height: 300px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    background-color: #fff;
+    overflow: hidden;
+}
+.case-item img{
+    width: 100%;
+}
+.col-1{
+    width: 25%;
+}
+.col-2{
+    width: 50%;
+}
+
+/* 关于我们 */
+.ours-list{
+    display: flex;
+    margin-top: 100px;
+    background-color: #f1f1f1;
+}
+/* 简介 */
+.ours-introduce{
+    width: 40%;
+    padding: 20px;
+    overflow: hidden;
+    background-color: #f7f7f7;
+}
+.ours-introduce .title{
+    padding: 10px 0;
+    font-weight: bold;
+}
+.ours-introduce .content{
+    padding: 10px 0;
+    line-height: 30px;
+}
+
+/* 联系方式 */
+.ours-concat-code{
+    width: 60%;
+    display: flex;
+}
+.ours-concat{
+    width: 30%;
+    padding: 20px;
+    overflow: hidden;
+}
+.ours-concat dt{
+    padding: 10px 0;
+    font-weight: bold;
+}
+.ours-concat dd{
+    padding: 10px 0;
+}
+/* 二维码 */
+.ours-code{
+    display: flex;
+    width: 70%;
+    padding: 20px;
+    overflow: hidden;
+}
+.concat-code{
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #ddd;
+    background-color: #fff;
+}
+.code-icon img{
+    width: 100%;
+}
+.code-desc{
+    padding: 10px 0;
+    text-align: center;
+}
+.code-desc span{
+    color: #888;
+    font-size: 12px;
+}
+
+/* 底部 */
+.footer-wrap{
+    padding: 20px 0;
+}
+.footer-wrap,
+.footer-wrap a{
+    font-size: 12px;
+    color: #888;
+}
+.footer-row{
+    padding: 5px 0;
+    text-align: center;
+}
+
+/* 1280分辨率以上（大于1200px）*/
+@media screen and (min-width:1200px){}
+
+/* 1100分辨率（大于960px，小于1199px）*/
+@media screen and (min-width: 960px) and (max-width: 1199px) {
+    .case-item{
+        height: 300px;
+    }
+    .col-2{
+        width: 50%;
+    }
+    .col-1{
+        width: 50%;
+    }
+    .service-list{
+        flex-wrap: wrap;
+    }
+    .service-item{
+        width: 46%;
+        margin: 2%;
+    }
+    .ours-list{
+        flex-wrap: wrap;
+    }
+    .ours-introduce,
+    .ours-concat-code{
+        flex-grow: 1;
+    }
+    .ours-concat-code{
+        background-color: #fff;
+    }
+}
+
+/* 880分辨率（大于768px，小于959px）*/
+@media screen and (min-width: 768px) and (max-width: 959px) {
+    .case-item{
+        height: 300px;
+    }
+    .col-2{
+        width: 50%;
+    }
+    .col-1{
+        width: 50%;
+    }
+    .service-list{
+        flex-wrap: wrap;
+    }
+    .service-item{
+        width: 46%;
+        margin: 2%;
+    }
+    .ours-list{
+        flex-wrap: wrap;
+    }
+    .ours-introduce,
+    .ours-concat-code{
+        flex-grow: 1;
+    }
+    .ours-concat-code{
+        background-color: #fff;
+    }
+}
+
+/* 720分辨率（大于480px，小于767px）*/
+@media only screen and (max-width: 767px){
+    .case-item{
+        height: 200px;
+    }
+    .col-2{
+        width: 50%;
+    }
+    .col-1{
+        width: 50%;
+    }
+    .service-list{
+        flex-wrap: wrap;
+    }
+    .service-item{
+        width: 46%;
+        margin: 2%;
+    }
+    .ours-list{
+        flex-wrap: wrap;
+    }
+    .ours-introduce,
+    .ours-concat-code{
+        width: 100%;
+    }
+    .ours-concat-code{
+        flex-wrap: wrap;
+        background-color: #fff;
+        text-align: center;
+    }
+    .ours-concat{
+        width: 100%;
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+    .ours-code{
+        width: 100%;
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+    header{
+        flex-wrap: wrap;
+    }
+    .logo-wrap{
+        width: 100%;
+        text-align: center;
+    }
+    .menu-list{
+        display: none;
+    }
+}
+@media only screen and (max-width: 479px) {
+    .case-item{
+        height: 200px;
+    }
+    .col-2{
+        width: 100%;
+    }
+    .col-1{
+        width: 100%;
+    }
+    .service-list{
+        flex-wrap: wrap;
+    }
+    .service-item{
+        width: 100%;
+    }
+    .ours-list{
+        flex-wrap: wrap;
+    }
+    .ours-introduce,
+    .ours-concat-code{
+        width: 100%;
+    }
+    .ours-concat-code{
+        flex-wrap: wrap;
+        background-color: #fff;
+    }
+    .ours-concat{
+        width: 100%;
+        flex-grow: 1;
+        flex-shrink: 1;
+        text-align: center;
+    }
+    .ours-code{
+        width: 100%;
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+    .section-wrap{
+        padding: 50px 0;
+    }
+    .service-list,
+    .case-list,
+    .ours-list{
+        margin-top: 50px;
+    }
+    header{
+        flex-wrap: wrap;
+    }
+    .logo-wrap{
+        width: 100%;
+        text-align: center;
+    }
+    .menu-list{
+        display: none;
+    }
+}

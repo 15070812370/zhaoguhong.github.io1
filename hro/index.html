@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HRO小工具</title>
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+</head>
+<body>
+<div class="main">
+    <div class="main-body">
+        <div class="box col-md-6 col-xs-6 col-sm-6">
+            <textarea class="form-control" id="source"></textarea>
+        </div>
+        <div class="box col-md-6 col-xs-6 col-sm-6">
+            <textarea class="form-control" id="target"></textarea>
+        </div>
+    </div>
+    <div class="main-nav">
+        <div class="btn-toolbar text-center">
+            <button class="btn btn-info" v-on:click="convert(1)"><i class="fa fa-car"></i>toString</button>
+            <button class="btn btn-info" v-on:click="convert(2)"><i class="fa fa-rocket"></i>toStringBuilder</button>
+            <button class="btn btn-info" v-on:click="convert(3)"><i class="fa fa-car"></i>toSql</button>
+            <button class="btn btn-info" v-on:click="convert(4)"><i class="fa fa-bicycle"></i>hqlToSql</button>
+            <button class="btn btn-info" v-on:click="convert(5)"><i class="fa fa-space-shuttle"></i>takeAlias</button>
+            <button class="btn btn-info" v-on:click="convert(6)"><i class="fa fa-refresh"></i>pathToUrl</button>
+            <button class="btn btn-info" v-on:click="clear"><i class="fa fa-refresh"></i>clear</button>
+            <a href="../xiaoruan/index.html">-&gt;暴打小软&lt;-</a>
+        </div>
+    </div>
+</div>
+<script src="js/require.js" data-main="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>暴打小软</title>
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container-fluid" id="main" v-cloak>
+    <div class="form-group"></div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label>模版</label>
+                                <textarea class="form-control" rows="10" id="temp_text"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label>数据</label>
+                                <textarea class="form-control" rows="10" id="data_list_text" readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row center-block text-center">
+                        <button class="btn btn-warning" v-on:click="save">保存</button>
+                        <button class="btn btn-danger" v-on:click="clearTemp">清空模版</button>
+                        <button class="btn btn-danger" v-on:click="clearData">清空数据</button>
+                        <button class="btn btn-info" data-toggle="modal" data-target="#dataModal">添加</button>
+                        <button class="btn btn-primary" v-on:click="generate">生成</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="resultModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="resultModalLabel">生成结果</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="30" id="result_text"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="dataModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="dataModalLabel">生成结果</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label>key</label>
+                            <input class="form-control" id="data_key">
+                        </div>
+                        <div class="form-group">
+                            <label>value</label>
+                            <textarea class="form-control" rows="20" id="data_value"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" v-on:click="add">添加</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/require.min.js" data-main="js/main"></script>
+</body>
+</html>
